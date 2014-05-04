@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ButtonClicker", "ButtonClicker.csproj", "{86654ED0-A0C5-425E-994B-FFECCDA36ADE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{86654ED0-A0C5-425E-994B-FFECCDA36ADE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86654ED0-A0C5-425E-994B-FFECCDA36ADE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86654ED0-A0C5-425E-994B-FFECCDA36ADE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86654ED0-A0C5-425E-994B-FFECCDA36ADE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = ButtonClicker.csproj
+	EndGlobalSection
+EndGlobal
