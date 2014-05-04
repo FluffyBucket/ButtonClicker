@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="hello">Hello World, Click Me!</string>
+	<string name="hello">Click Me!</string>
+	<string name="clicks">Total: 0</string>
 	<string name="app_name">ButtonClicker</string>
+	<string name="catButton">Buy 1 Cat</string>
+	<string name="catCount">Cats: 0</string>
 </resources>
