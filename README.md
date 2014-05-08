@@ -6,3 +6,4 @@ The game in question is an android game where you will push a button and you gat
 
 Credits:
 Fredrik Mårlind
+Erik Sänne
