@@ -11,17 +11,17 @@ namespace ButtonClicker
 	[Activity (Label = "ButtonClicker", MainLauncher = true)]
 	public class MainActivity : Activity
 	{
-		double count = 0;
-		double currentCount = 0;
-		int catCount = 0;
-		int catCost = 10;
+		double clicks_Total = 0;
+		double clicks_Current = 0;
+		int cat_Amount = 0;
+		int cat_Cost = 10;
 		double mult = 1;
 
-		private Button clickMe;
-		private Button buyCat;
-		private TextView clicks;
-		private TextView current;
-		private TextView catTxtCount;
+		private Button BtnClickMe;
+		private Button BtnBuyCat;
+		private TextView TVClicks;
+		private TextView TVCurrent;
+		private TextView TVCatAmount;
 
 		protected override void OnCreate (Bundle bundle)
 		{
@@ -31,37 +31,37 @@ namespace ButtonClicker
 			SetContentView (Resource.Layout.Main);
 
 			//Find the buttons
-			clickMe = FindViewById<Button> (Resource.Id.click);
-			clickMe.Click += new EventHandler (click_Click);
+			BtnClickMe = FindViewById<Button> (Resource.Id.click);
+			BtnClickMe.Click += new EventHandler (click_Click);
 
-			buyCat = FindViewById<Button> (Resource.Id.buyCat);
-			buyCat.Click += new EventHandler (buyCat_Click);
+			BtnBuyCat = FindViewById<Button> (Resource.Id.buyCat);
+			BtnBuyCat.Click += new EventHandler (buyCat_Click);
 
-			clicks = FindViewById<TextView> (Resource.Id.clickCount);
-			catTxtCount = FindViewById<TextView> (Resource.Id.catCount);
-			current = FindViewById<TextView> (Resource.Id.currentCount);
+			TVClicks = FindViewById<TextView> (Resource.Id.clickCount);
+			TVCatAmount = FindViewById<TextView> (Resource.Id.catCount);
+			TVCurrent = FindViewById<TextView> (Resource.Id.currentCount);
 
 
 		}
 
 		private void click_Click (object sender, EventArgs e)
 		{
-			count += 1 * mult;
-			currentCount += 1 * mult;
-			clicks.Text = "Total: " + count;
-			current.Text = "Current: " + currentCount;
+			clicks_Total += 1 * mult;
+			clicks_Current += 1 * mult;
+			TVClicks.Text = "Total: " + clicks_Total;
+			TVCurrent.Text = "Current: " + clicks_Current;
 		}
 
 		private void buyCat_Click (object sender, EventArgs e)
 		{
-			if (currentCount >= catCost) {
-				catCount += 1;
-				currentCount -= catCost;
+			if (clicks_Current >= cat_Cost) {
+				cat_Amount += 1;
+				clicks_Current -= cat_Cost;
 			}
 
-			mult += (catCount);
-			catTxtCount.Text = "Cats: " + catCount;
-			current.Text = "Current: " + currentCount;
+			mult += (cat_Amount);
+			TVCatAmount.Text = "Cats: " + cat_Amount;
+			TVCurrent.Text = "Current: " + clicks_Current;
 		}
 	}
 }
