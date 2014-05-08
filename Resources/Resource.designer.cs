@@ -60,17 +60,20 @@ namespace ButtonClicker
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f050004
+			public const int buyCat = 2131034116;
+			
 			// aapt resource value: 0x7f050003
-			public const int buyCat = 2131034115;
+			public const int catCount = 2131034115;
 			
 			// aapt resource value: 0x7f050002
-			public const int catCount = 2131034114;
-			
-			// aapt resource value: 0x7f050001
-			public const int click = 2131034113;
+			public const int click = 2131034114;
 			
 			// aapt resource value: 0x7f050000
 			public const int clickCount = 2131034112;
+			
+			// aapt resource value: 0x7f050001
+			public const int currentCount = 2131034113;
 			
 			static Id()
 			{
@@ -112,6 +115,9 @@ namespace ButtonClicker
 			
 			// aapt resource value: 0x7f040001
 			public const int clicks = 2130968577;
+			
+			// aapt resource value: 0x7f040005
+			public const int currentCount = 2130968581;
 			
 			// aapt resource value: 0x7f040000
 			public const int hello = 2130968576;
