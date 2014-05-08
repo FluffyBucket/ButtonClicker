@@ -43,7 +43,7 @@ namespace ButtonClicker
 
 		private void click_Click (object sender, EventArgs e)
 		{
-
+			Hej
 		}
 
 		private void buyCat_Click (object sender, EventArgs e)
