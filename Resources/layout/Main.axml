@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/clickCount" />
     <Button
-        android:id="@+id/myButton"
+        android:id="@+id/click"
         android:layout_width="fill_parent"
         android:layout_height="94.7dp"
         android:text="@string/hello" />
