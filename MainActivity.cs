@@ -43,16 +43,14 @@ namespace ButtonClicker
 
 		private void click_Click (object sender, EventArgs e)
 		{
-<<<<<<< HEAD
-			då
-=======
-			Hej
->>>>>>> be7f011d5c437bc0f02346e6c10e184d6bf0dfc8
+			count += 1 * mult;
+			clicks.Text = "Total: " + count;
 		}
 
 		private void buyCat_Click (object sender, EventArgs e)
 		{
-
+			catCount += 1;
+			catTxtCount.Text = "Cats: " + catCount;
 		}
 	}
 }
