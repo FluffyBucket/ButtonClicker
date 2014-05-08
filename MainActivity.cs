@@ -11,10 +11,20 @@ namespace ButtonClicker
 	[Activity (Label = "ButtonClicker", MainLauncher = true)]
 	public class MainActivity : Activity
 	{
+		/*
+			NOTES- and IDEAS-LIST:
+			- How about later on making a "shop-window" with a list-layout? //Erik
+
+
+		*/
+
+
+		//Global vars
 		double clicks_Total = 0;
 		double clicks_Current = 0;
 		int cat_Amount = 0;
 		int cat_Cost = 10;
+		double cat_CostMultiplier = 3; //Not the final solution, but just to somehow change the cost after buying a cat.
 		double mult = 1;
 
 		private Button BtnClickMe;
@@ -26,7 +36,6 @@ namespace ButtonClicker
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
-
 			// Set our view from the "main" layout resource
 			SetContentView (Resource.Layout.Main);
 
@@ -55,11 +64,13 @@ namespace ButtonClicker
 		private void buyCat_Click (object sender, EventArgs e)
 		{
 			if (clicks_Current >= cat_Cost) {
-				cat_Amount += 1;
+				cat_Amount++;
 				clicks_Current -= cat_Cost;
+				cat_Cost = (int)(cat_Cost * cat_CostMultiplier);
 			}
 
-			mult += (cat_Amount);
+			mult += (cat_Amount); //This might be the plan, but are mult goint to increase exponentially?
+			//						How about, instead of multiplying, increasing the "chanse" of getting an extra click?
 			TVCatAmount.Text = "Cats: " + cat_Amount;
 			TVCurrent.Text = "Current: " + clicks_Current;
 		}
