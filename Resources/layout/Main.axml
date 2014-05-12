@@ -8,15 +8,15 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/clickCount" />
+        android:id="@+id/tvClickCount" />
     <TextView
         android:text="@string/currentCount"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/currentCount" />
+        android:id="@+id/tvCurrentCount" />
     <Button
-        android:id="@+id/click"
+        android:id="@+id/btnClick"
         android:layout_width="fill_parent"
         android:layout_height="94.7dp"
         android:text="@string/hello" />
@@ -25,11 +25,16 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/catCount" />
+        android:id="@+id/tvCatCount" />
     <Button
         android:text="@string/catButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/buyCat"
+        android:id="@+id/btnBuyCat"
         android:layout_marginRight="0.0dp" />
+    <Button
+        android:text="Button"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/btnSQL" />
 </LinearLayout>

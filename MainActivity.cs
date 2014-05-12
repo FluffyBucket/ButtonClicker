@@ -5,6 +5,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace ButtonClicker
 {
@@ -19,12 +21,13 @@ namespace ButtonClicker
 		*/
 
 
+
 		//Global vars
 		double clicks_Total = 0;
 		double clicks_Current = 0;
 		int cat_Amount = 0;
 		int cat_Cost = 10;
-		double cat_CostMultiplier = 3; //Not the final solution, but just to somehow change the cost after buying a cat.
+		double cat_CostMultiplier = 1; //Not the final solution, but just to somehow change the cost after buying a cat.
 		double mult = 1;
 
 		private Button BtnClickMe;
@@ -32,6 +35,7 @@ namespace ButtonClicker
 		private TextView TVClicks;
 		private TextView TVCurrent;
 		private TextView TVCatAmount;
+		private Button btnSQL;
 
 		protected override void OnCreate (Bundle bundle)
 		{
@@ -40,16 +44,18 @@ namespace ButtonClicker
 			SetContentView (Resource.Layout.Main);
 
 			//Find the buttons
-			BtnClickMe = FindViewById<Button> (Resource.Id.click);
+			BtnClickMe = FindViewById<Button> (Resource.Id.btnClick);
 			BtnClickMe.Click += new EventHandler (click_Click);
 
-			BtnBuyCat = FindViewById<Button> (Resource.Id.buyCat);
+			BtnBuyCat = FindViewById<Button> (Resource.Id.btnBuyCat);
 			BtnBuyCat.Click += new EventHandler (buyCat_Click);
 
-			TVClicks = FindViewById<TextView> (Resource.Id.clickCount);
-			TVCatAmount = FindViewById<TextView> (Resource.Id.catCount);
-			TVCurrent = FindViewById<TextView> (Resource.Id.currentCount);
+			TVClicks = FindViewById<TextView> (Resource.Id.tvClickCount);
+			TVCatAmount = FindViewById<TextView> (Resource.Id.tvCatCount);
+			TVCurrent = FindViewById<TextView> (Resource.Id.tvCurrentCount);
 
+			btnSQL = FindViewById<Button> (Resource.Id.btnSQL);
+			btnSQL.Click += new EventHandler (btnSQL_Click);
 
 		}
 
@@ -67,12 +73,32 @@ namespace ButtonClicker
 				cat_Amount++;
 				clicks_Current -= cat_Cost;
 				cat_Cost = (int)(cat_Cost * cat_CostMultiplier);
+				cat_CostMultiplier++;
 			}
 
 			mult += (cat_Amount); //This might be the plan, but are mult goint to increase exponentially?
 			//						How about, instead of multiplying, increasing the "chanse" of getting an extra click?
 			TVCatAmount.Text = "Cats: " + cat_Amount;
 			TVCurrent.Text = "Current: " + clicks_Current;
+		}
+
+		private void btnSQL_Click (object sender, EventArgs e)
+		{
+			SqlConnection myConnection = new SqlConnection("user id=fakeid;" + 
+			                                               "password=fakepw; server=dbadmin.one.com;" + 
+			                                               "Trusted_Connection=no;" + 
+			                                               "database=marlind_net;" + 
+			                                               "connection timeout=30");
+			try
+			{
+				myConnection.Open();
+			}
+			catch(Exception a)
+			{
+				btnSQL.Text = a.ToString ();
+			}
+
+
 		}
 	}
 }
