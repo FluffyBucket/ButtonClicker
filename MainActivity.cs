@@ -11,6 +11,8 @@ using Android.OS;
 namespace ButtonClicker
 {
 	[Activity (Label = "ButtonClicker", MainLauncher = true)]
+
+
 	public class MainActivity : Activity
 	{
 		/*
@@ -31,12 +33,18 @@ namespace ButtonClicker
 		double cat_CostMultiplier = 1; //Not the final solution, but just to somehow change the cost after buying a cat.
 		double mult = 1;
 
+		Random randomCatEffectChanse = new Random();
+		Random effectType = new Random();
+
 		private Button BtnClickMe;
 		private Button BtnBuyCat;
 		private TextView TVClicks;
 		private TextView TVCurrent;
 		private TextView TVCatAmount;
 		private Button btnSQL;
+
+		//DEBUG
+		private TextView TVCatCost;
 
 		protected override void OnCreate (Bundle bundle)
 		{
@@ -55,6 +63,8 @@ namespace ButtonClicker
 			TVCatAmount = FindViewById<TextView> (Resource.Id.tvCatCount);
 			TVCurrent = FindViewById<TextView> (Resource.Id.tvCurrentCount);
 
+			//DEBUG
+			TVCatCost = FindViewById<TextView> (Resource.Id.textView1);
 			//btnSQL = FindViewById<Button> (Resource.Id.btnSQL);
 			//btnSQL.Click += new EventHandler (btnSQL_Click);
 
@@ -64,6 +74,25 @@ namespace ButtonClicker
 		{
 			clicks_Total += 1 * mult;
 			clicks_Current += 1 * mult;
+
+			//Randomizes a number between 1 and 100, and if the number is less then the cat amount a effect can take place
+			if (randomCatEffectChanse.Next (0, 100) < cat_Amount) {
+
+				//Randomizes a number as previous, and thereby decide a suitable effect
+				if (effectType.Next (0, 100) < 50) {
+					//DubbleCoin effect
+					clicks_Total += 1 * mult;
+					clicks_Current += 1 * mult;
+				} else {
+					// + 200 clicks
+					clicks_Total += 200;     //NOTE: NOT MULTIPLIED
+					clicks_Current += 200;
+				}
+			
+			
+			}
+
+
 			TVClicks.Text = "Total: " + clicks_Total;
 			TVCurrent.Text = "Current: " + clicks_Current;
 		}
@@ -73,12 +102,11 @@ namespace ButtonClicker
 			if (clicks_Current >= cat_Cost) {
 				cat_Amount++;
 				clicks_Current -= cat_Cost;
-				cat_Cost = (int)(cat_Cost * cat_CostMultiplier);
 				cat_CostMultiplier++;
-			}
+				cat_Cost = (int)(cat_Cost * cat_CostMultiplier);
 
-			mult += (cat_Amount); //This might be the plan, but are mult goint to increase exponentially?
-			//						How about, instead of multiplying, increasing the "chanse" of getting an extra click?
+			}
+			TVCatCost.Text = cat_Cost.ToString();
 			TVCatAmount.Text = "Cats: " + cat_Amount;
 			TVCurrent.Text = "Current: " + clicks_Current;
 		}
