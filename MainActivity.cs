@@ -16,9 +16,15 @@ namespace ButtonClicker
 		/*
 			NOTES- and IDEAS-LIST:
 			- How about later on making a "shop-window" with a list-layout? //Erik
+<<<<<<< HEAD
 			- Added a bunch of buttons. Id of buttons is as follows: "button1" and then upp to "button8".
 			- Added a bunch of textview's to go along with the buttons. Id of them are as follows "textview1" to "textview6".
 			NOTE! Change these buttons and texviews names to something better when they have an actual function.
+=======
+			- Added a bunch of buttons. Id of buttons is as follows: "button1" and then upp to "button8"
+			NOTE! Change these buttons names to something better when they have an actual function.
+			- Added a bunch of textview's to go along with the buttons. Id of them are as follows "textview1" to "textview6".
+>>>>>>> 48053a0e235e1bdaf90ccebc1f51afa0d9bef54b
 		*/
 
 
