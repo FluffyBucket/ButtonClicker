@@ -21,6 +21,7 @@ namespace ButtonClicker
 			- Added a bunch of buttons. Id of buttons is as follows: "button1" and then upp to "button8".
 			- Added a bunch of textview's to go along with the buttons. Id of them are as follows "textview1" to "textview6".
 			NOTE! Change these buttons and texviews names to something better when they have an actual function.
+			- If anyone comes up with new nice cat effects, please write them here below. //Eriks
 		*/
 
 
@@ -28,9 +29,9 @@ namespace ButtonClicker
 		//Global vars
 		double clicks_Total = 0;
 		double clicks_Current = 0;
-		int cat_Amount = 0;
+		int cat_Amount = 1;
 		int cat_Cost = 10;
-		double cat_CostMultiplier = 1; //Not the final solution, but just to somehow change the cost after buying a cat.
+		double cat_CostMultiplier = 1; //Not the final solution, but just to somehow change the price after buying a cat.
 		double mult = 1;
 
 		Random randomCatEffectChanse = new Random();
@@ -43,8 +44,10 @@ namespace ButtonClicker
 		private TextView TVCatAmount;
 		private Button btnSQL;
 
-		//DEBUG
+		//DEBUG VARS
 		private TextView TVCatCost;
+		private Button BtnGiveCat;
+
 
 		protected override void OnCreate (Bundle bundle)
 		{
@@ -65,9 +68,21 @@ namespace ButtonClicker
 
 			//DEBUG
 			TVCatCost = FindViewById<TextView> (Resource.Id.textView1);
+			TVCatCost.Text = "Cat Price: " + cat_Cost.ToString ();
+			BtnGiveCat = FindViewById<Button> (Resource.Id.button2);
+			BtnGiveCat.Text = "Debug me cats!";
+			BtnGiveCat.Click += new EventHandler (click_DebugMeCats);
 			//btnSQL = FindViewById<Button> (Resource.Id.btnSQL);
 			//btnSQL.Click += new EventHandler (btnSQL_Click);
 
+		}
+
+		private void click_DebugMeCats (object sender, EventArgs e)
+		{
+			//For debug only
+			cat_Amount += 20; if (cat_Amount > 100)
+				cat_Amount = 100;
+			TVCatAmount.Text = "Cats: " + cat_Amount;
 		}
 
 		private void click_Click (object sender, EventArgs e)
@@ -78,18 +93,24 @@ namespace ButtonClicker
 			//Randomizes a number between 1 and 100, and if the number is less then the cat amount a effect can take place
 			if (randomCatEffectChanse.Next (0, 100) < cat_Amount) {
 
-				//Randomizes a number as previous, and thereby decide a suitable effect
-				if (effectType.Next (0, 100) < 50) {
+				//Choise of effect
+				switch (effectType.Next (1, 4)) { //Min: Lowest possible, Max: One above highest
+				case 1:
 					//DubbleCoin effect
 					clicks_Total += 1 * mult;
 					clicks_Current += 1 * mult;
-				} else {
+					break;
+				case 2:
 					// + 200 clicks
 					clicks_Total += 200;     //NOTE: NOT MULTIPLIED
 					clicks_Current += 200;
+					break;
+				case 3:
+					// + 500 total clicks
+					clicks_Total += 500;
+					break;
 				}
-			
-			
+
 			}
 
 
@@ -99,14 +120,21 @@ namespace ButtonClicker
 
 		private void buyCat_Click (object sender, EventArgs e)
 		{
-			if (clicks_Current >= cat_Cost) {
+			if (clicks_Current >= cat_Cost && cat_Amount < 100) { //Can not buy more than 100 cats
 				cat_Amount++;
 				clicks_Current -= cat_Cost;
 				cat_CostMultiplier++;
 				cat_Cost = (int)(cat_Cost * cat_CostMultiplier);
-
+			} else if (cat_Amount >= 100) {
+				new AlertDialog.Builder(this)
+					.SetMessage("Stop buying cats, damn it!")
+					.Show();
+			} else if (clicks_Current < cat_Cost) {
+				new AlertDialog.Builder(this)
+					.SetMessage("You are one poor fuc*er. You can buy 20 more clicks for only 3457,45 SEK")
+					.Show();
 			}
-			TVCatCost.Text = cat_Cost.ToString();
+			TVCatCost.Text = "Cat Price: " + cat_Cost.ToString();
 			TVCatAmount.Text = "Cats: " + cat_Amount;
 			TVCurrent.Text = "Current: " + clicks_Current;
 		}
