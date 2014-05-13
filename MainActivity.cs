@@ -5,8 +5,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
-using System.Data;
-using System.Data.SqlClient;
+//using System.Data;
+//using System.Data.SqlClient;
 
 namespace ButtonClicker
 {
@@ -16,15 +16,9 @@ namespace ButtonClicker
 		/*
 			NOTES- and IDEAS-LIST:
 			- How about later on making a "shop-window" with a list-layout? //Erik
-<<<<<<< HEAD
 			- Added a bunch of buttons. Id of buttons is as follows: "button1" and then upp to "button8".
 			- Added a bunch of textview's to go along with the buttons. Id of them are as follows "textview1" to "textview6".
 			NOTE! Change these buttons and texviews names to something better when they have an actual function.
-=======
-			- Added a bunch of buttons. Id of buttons is as follows: "button1" and then upp to "button8"
-			NOTE! Change these buttons names to something better when they have an actual function.
-			- Added a bunch of textview's to go along with the buttons. Id of them are as follows "textview1" to "textview6".
->>>>>>> 48053a0e235e1bdaf90ccebc1f51afa0d9bef54b
 		*/
 
 
@@ -61,8 +55,8 @@ namespace ButtonClicker
 			TVCatAmount = FindViewById<TextView> (Resource.Id.tvCatCount);
 			TVCurrent = FindViewById<TextView> (Resource.Id.tvCurrentCount);
 
-			btnSQL = FindViewById<Button> (Resource.Id.btnSQL);
-			btnSQL.Click += new EventHandler (btnSQL_Click);
+			//btnSQL = FindViewById<Button> (Resource.Id.btnSQL);
+			//btnSQL.Click += new EventHandler (btnSQL_Click);
 
 		}
 
@@ -88,17 +82,17 @@ namespace ButtonClicker
 			TVCatAmount.Text = "Cats: " + cat_Amount;
 			TVCurrent.Text = "Current: " + clicks_Current;
 		}
-
+		/* //No more SQL will replace with a webservice insted
 		private void btnSQL_Click (object sender, EventArgs e)
 		{
-			SqlConnection myConnection = new SqlConnection("user id=fakeid;" + 
-			                                               "password=fakepw; server=dbadmin.one.com;" + 
-			                                               "Trusted_Connection=no;" + 
-			                                               "database=marlind_net;" + 
-			                                               "connection timeout=30");
+			string sqlConnectionString = "Data Source=dbadmin.one.com;user id=marlind_net;password=123456789M;database=marlind_net;connection timeout=10";
+			SqlConnection myConnection = new SqlConnection(sqlConnectionString);
+
 			try
 			{
 				myConnection.Open();
+				Toast.MakeText (this,"I has completed my mission master!", ToastLength.Long).Show();
+				myConnection.Close ();
 			}
 			catch(Exception a)
 			{
@@ -106,7 +100,7 @@ namespace ButtonClicker
 			}
 
 
-		}
+		}*/
 	}
 }
 
