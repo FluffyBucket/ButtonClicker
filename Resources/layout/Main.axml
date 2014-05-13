@@ -1,40 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-    <TextView
-        android:text="@string/clicks"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TableLayout
+        android:minWidth="25px"
+        android:minHeight="25px"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tvClickCount" />
-    <TextView
-        android:text="@string/currentCount"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/tableInfo"
+        android:stretchColumns="*">
+        <TableRow
+            android:id="@+id/tableRow1">
+            <TextView
+                android:text="@string/clicks"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/tvClickCount"
+                android:layout_column="0" />
+            <TextView
+                android:text="Text1"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_column="1"
+                android:id="@+id/textView1" />
+            <TextView
+                android:text="Text2"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_column="2"
+                android:id="@+id/textView2" />
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow2">
+            <TextView
+                android:text="@string/currentCount"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/tvCurrentCount"
+                android:layout_column="0" />
+            <TextView
+                android:text="Text3"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_column="1"
+                android:id="@+id/textView3" />
+            <TextView
+                android:text="Text4"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_column="2"
+                android:id="@+id/textView4" />
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow3">
+            <TextView
+                android:text="@string/catCount"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/tvCatCount"
+                android:layout_column="0" />
+            <TextView
+                android:text="Text5"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_column="1"
+                android:id="@+id/textView5" />
+            <TextView
+                android:text="Text6"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_column="2"
+                android:id="@+id/textView6" />
+        </TableRow>
+    </TableLayout>
+    <TableLayout
+        android:minWidth="25px"
+        android:minHeight="25px"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tvCurrentCount" />
+        android:id="@+id/tableBuy"
+        android:shrinkColumns="*"
+        android:stretchColumns="*">
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="wrap_content">
+            <Button
+                android:text="@string/catButton"
+                android:id="@+id/btnBuyCat"
+                android:layout_column="0"
+                android:layout_width="wrap_content" />
+            <Button
+                android:text="Button8"
+                android:layout_column="1"
+                android:id="@+id/button8" />
+            <Button
+                android:text="Button1"
+                android:layout_column="2"
+                android:id="@+id/button1"
+                android:layout_width="match_parent" />
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow5">
+            <Button
+                android:text="Button2"
+                android:layout_column="0"
+                android:id="@+id/button2" />
+            <Button
+                android:text="Button3"
+                android:layout_column="1"
+                android:id="@+id/button3" />
+            <Button
+                android:text="Button4"
+                android:layout_column="2"
+                android:id="@+id/button4" />
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow6">
+            <Button
+                android:text="Button5"
+                android:layout_column="0"
+                android:id="@+id/button5" />
+            <Button
+                android:text="Button6"
+                android:layout_column="1"
+                android:id="@+id/button6" />
+            <Button
+                android:text="Button7"
+                android:layout_column="2"
+                android:id="@+id/button7" />
+        </TableRow>
+    </TableLayout>
     <Button
         android:id="@+id/btnClick"
-        android:layout_width="fill_parent"
-        android:layout_height="94.7dp"
-        android:text="@string/hello" />
-    <TextView
-        android:text="@string/catCount"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvCatCount" />
+        android:text="@string/hello"
+        android:textColor="#ffd127e9"
+        android:background="#ffe5e71e"
+        android:fadingEdge="none"
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
     <Button
-        android:text="@string/catButton"
+        android:text="SQL Me"
+        android:id="@+id/btnSQL"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:src="@android:drawable/ic_menu_gallery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btnBuyCat"
-        android:layout_marginRight="0.0dp" />
-    <Button
-        android:text="Button"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/btnSQL" />
+        android:id="@+id/imageView1"
+        android:background="@drawable/m_approve"
+        android:cropToPadding="false"
+        android:scaleType="fitCenter" />
 </LinearLayout>
