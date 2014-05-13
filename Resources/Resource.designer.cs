@@ -96,9 +96,6 @@ namespace ButtonClicker
 			// aapt resource value: 0x7f050010
 			public const int button8 = 2131034128;
 			
-			// aapt resource value: 0x7f05001c
-			public const int imageView1 = 2131034140;
-			
 			// aapt resource value: 0x7f05000d
 			public const int tableBuy = 2131034125;
 			

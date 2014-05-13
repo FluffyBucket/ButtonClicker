@@ -135,12 +135,4 @@
         android:id="@+id/btnSQL"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
-    <ImageView
-        android:src="@android:drawable/ic_menu_gallery"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView1"
-        android:background="@drawable/m_approve"
-        android:cropToPadding="false"
-        android:scaleType="fitCenter" />
 </LinearLayout>
