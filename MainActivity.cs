@@ -21,7 +21,12 @@ namespace ButtonClicker
 			- Added a bunch of buttons. Id of buttons is as follows: "button1" and then upp to "button8".
 			- Added a bunch of textview's to go along with the buttons. Id of them are as follows "textview1" to "textview6".
 			NOTE! Change these buttons and texviews names to something better when they have an actual function.
-			- If anyone comes up with new nice cat effects, please write them here below. //Eriks
+			- If anyone comes up with new nice cat effects, please write them here below. //Erik
+
+			
+			KNOWN BUGS:
+			- Can buy first cat without enough clicks
+			- Cannot click atm... I'll fix this after dinner....
 		*/
 
 
@@ -31,7 +36,7 @@ namespace ButtonClicker
 		double clicks_Current = 0;
 		int cat_Amount = 1;
 		int cat_Cost = 10;
-		double cat_CostMultiplier = 1; //Not the final solution, but just to somehow change the price after buying a cat.
+		double cat_CostMultiplier = 1; 
 		double mult = 1;
 
 		Random randomCatEffectChanse = new Random();
@@ -87,8 +92,7 @@ namespace ButtonClicker
 
 		private void click_Click (object sender, EventArgs e)
 		{
-			clicks_Total += 1 * mult;
-			clicks_Current += 1 * mult;
+			int clickstack = (int)(1 * mult);
 
 			//Randomizes a number between 1 and 100, and if the number is less then the cat amount a effect can take place
 			if (randomCatEffectChanse.Next (0, 100) < cat_Amount) {
@@ -97,12 +101,11 @@ namespace ButtonClicker
 				switch (effectType.Next (1, 4)) { //Min: Lowest possible, Max: One above highest
 				case 1:
 					//DubbleCoin effect
-					clicks_Total += 1 * mult;
-					clicks_Current += 1 * mult;
+					clickstack *= 2;
 					break;
 				case 2:
 					// + 200 clicks
-					clicks_Total += 200;     //NOTE: NOT MULTIPLIED
+					clicks_Total += 200;     
 					clicks_Current += 200;
 					break;
 				case 3:
@@ -110,6 +113,9 @@ namespace ButtonClicker
 					clicks_Total += 500;
 					break;
 				}
+
+				clicks_Total += clickstack;     
+				clicks_Current += clickstack;
 
 			}
 
