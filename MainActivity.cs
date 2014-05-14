@@ -25,8 +25,8 @@ namespace ButtonClicker
 
 			
 			KNOWN BUGS:
-			- Can buy first cat without enough clicks
-			- Cannot click atm... I'll fix this after dinner....
+			- Can buy first cat without enough clicks [Fixed]
+			- Cannot click atm... I'll fix this after dinner.... [Fixed]
 		*/
 
 
@@ -34,7 +34,7 @@ namespace ButtonClicker
 		//Global vars
 		double clicks_Total = 0;
 		double clicks_Current = 0;
-		int cat_Amount = 1;
+		int cat_Amount = 0;
 		int cat_Cost = 10;
 		double cat_CostMultiplier = 1; 
 		double mult = 1;
@@ -113,12 +113,10 @@ namespace ButtonClicker
 					clicks_Total += 500;
 					break;
 				}
-
-				clicks_Total += clickstack;     
-				clicks_Current += clickstack;
-
 			}
 
+			clicks_Total += clickstack;     
+			clicks_Current += clickstack;
 
 			TVClicks.Text = "Total: " + clicks_Total;
 			TVCurrent.Text = "Current: " + clicks_Current;
