@@ -2,7 +2,11 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="MainActivity.cs">
     <Files>
+<<<<<<< HEAD
       <File FileName="MainActivity.cs" Line="67" Column="12" />
+=======
+      <File FileName="MainActivity.cs" Line="36" Column="29" />
+>>>>>>> f0110598c57ce675000b97bc0bc98424c69054cf
       <File FileName="Resources\values\Strings.xml" Line="1" Column="1" />
       <File FileName="Properties\AndroidManifest.xml" Line="6" Column="12" />
     </Files>
@@ -11,5 +15,5 @@
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.ButtonClicker MonoForAntroid.PreferredDevice="3.7in WVGA (Nexus One)" AndroidDeviceId-Debug="emulator-5554" />
+  <MonoDevelop.Ide.ItemProperties.ButtonClicker MonoForAntroid.PreferredDevice="3.7in WVGA (Nexus One)" />
 </Properties>
