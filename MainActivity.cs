@@ -203,7 +203,7 @@ namespace ButtonClicker
 					.Show();
 			}
 			TVBananaCost.Text = "Banana Price: " + banana_Cost.ToString();
-			TVBananaAmount.Text = "Banana: " + banana_Amount.ToString();
+			TVBananaAmount.Text = "Bananas: " + banana_Amount.ToString();
 			TVCurrent.Text = "Current: " + clicks_Current;
 		}
 		/* //No more SQL will replace with a webservice insted
