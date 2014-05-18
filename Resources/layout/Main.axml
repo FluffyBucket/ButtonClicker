@@ -18,10 +18,10 @@
                 android:id="@+id/tvClickCount"
                 android:layout_column="0" />
             <TextView
-                android:text="Text1"
+                android:text="@string/currentCount"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_column="1"
-                android:id="@+id/textView1" />
+                android:id="@+id/tvCurrentCount"
+                android:layout_column="1" />
             <TextView
                 android:text="Text2"
                 android:textAppearance="?android:attr/textAppearanceMedium"
@@ -31,9 +31,9 @@
         <TableRow
             android:id="@+id/tableRow2">
             <TextView
-                android:text="@string/currentCount"
+                android:text="@string/catCount"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/tvCurrentCount"
+                android:id="@+id/tvCatCount"
                 android:layout_column="0" />
             <TextView
                 android:text="Text3"
@@ -49,9 +49,9 @@
         <TableRow
             android:id="@+id/tableRow3">
             <TextView
-                android:text="@string/catCount"
+                android:text="Text1"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/tvCatCount"
+                android:id="@+id/textView1"
                 android:layout_column="0" />
             <TextView
                 android:text="Text5"
@@ -114,8 +114,8 @@
                 android:id="@+id/button5" />
             <Button
                 android:text="Button6"
-                android:layout_column="1"
-                android:id="@+id/button6" />
+                android:id="@+id/button6"
+                android:layout_column="1" />
             <Button
                 android:text="Button7"
                 android:layout_column="2"

@@ -3,7 +3,7 @@
 	<string name="hello">Click Me!</string>
 	<string name="clicks">Total: 0</string>
 	<string name="app_name">ButtonClicker</string>
-	<string name="catButton">Buy 1 Cat</string>
+	<string name="catButton">Buy Cat</string>
 	<string name="catCount">Cats: 0</string>
 	<string name="currentCount">Current: 0</string>
 	<string name="strNameEntryTitle">Welcome new user!</string>

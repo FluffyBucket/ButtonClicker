@@ -114,8 +114,13 @@ namespace ButtonClicker
 			// aapt resource value: 0x7f050010
 			public const int tableRow4 = 2131034128;
 			
+<<<<<<< HEAD
 			// aapt resource value: 0x7f050014
 			public const int tableRow5 = 2131034132;
+=======
+			// aapt resource value: 0x7f05000a
+			public const int textView1 = 2131034122;
+>>>>>>> ab3d4c7a670afee0146b77f536a7fe550669334c
 			
 			// aapt resource value: 0x7f050018
 			public const int tableRow6 = 2131034136;
@@ -141,17 +146,27 @@ namespace ButtonClicker
 			// aapt resource value: 0x7f05000c
 			public const int tvCatCount = 2131034124;
 			
+<<<<<<< HEAD
 			// aapt resource value: 0x7f050004
 			public const int tvClickCount = 2131034116;
+=======
+			// aapt resource value: 0x7f050006
+			public const int tvCatCount = 2131034118;
+>>>>>>> ab3d4c7a670afee0146b77f536a7fe550669334c
 			
 			// aapt resource value: 0x7f050008
 			public const int tvCurrentCount = 2131034120;
 			
+<<<<<<< HEAD
 			// aapt resource value: 0x7f050001
 			public const int username_edit = 2131034113;
 			
 			// aapt resource value: 0x7f050000
 			public const int username_view = 2131034112;
+=======
+			// aapt resource value: 0x7f050003
+			public const int tvCurrentCount = 2131034115;
+>>>>>>> ab3d4c7a670afee0146b77f536a7fe550669334c
 			
 			static Id()
 			{
