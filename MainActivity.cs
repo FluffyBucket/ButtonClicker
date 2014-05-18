@@ -37,21 +37,30 @@ namespace ButtonClicker
 		int cat_Amount = 0;
 		int cat_Cost = 10;
 		double cat_CostMultiplier = 1; 
+<<<<<<< HEAD
 		double mult = 1;
 		bool hasName = false;
+=======
+		int banana_Amount = 0;
+		int banana_Cost = 2000;
+		double banana_CostMultiplier = Math.E;
+>>>>>>> 8713ea80d0e9e5c43b88c58689b44de766a7c9b7
 
 		Random randomCatEffectChanse = new Random();
 		Random effectType = new Random();
 
 		private Button BtnClickMe;
 		private Button BtnBuyCat;
+		private Button BtnBuyBanana;
 		private TextView TVClicks;
 		private TextView TVCurrent;
 		private TextView TVCatAmount;
+		private TextView TVBananaAmount;
 		private Button btnSQL;
 
 		//DEBUG VARS
 		private TextView TVCatCost;
+		private TextView TVBananaCost;
 		private Button BtnGiveCat;
 
 
@@ -68,10 +77,17 @@ namespace ButtonClicker
 			BtnBuyCat = FindViewById<Button> (Resource.Id.btnBuyCat);
 			BtnBuyCat.Click += new EventHandler (buyCat_Click);
 
-			TVClicks = FindViewById<TextView> (Resource.Id.tvClickCount);
-			TVCatAmount = FindViewById<TextView> (Resource.Id.tvCatCount);
-			TVCurrent = FindViewById<TextView> (Resource.Id.tvCurrentCount);
+			BtnBuyBanana = FindViewById<Button> (Resource.Id.button8);
+			BtnBuyBanana.Text = "Buy Banana";
+			BtnBuyBanana.Click += new EventHandler (buyBanana_Click);
 
+			TVClicks = FindViewById<TextView> (Resource.Id.tvClickCount);
+			TVCurrent = FindViewById<TextView> (Resource.Id.tvCurrentCount);
+			TVCatAmount = FindViewById<TextView> (Resource.Id.tvCatCount);
+			TVBananaAmount = FindViewById<TextView> (Resource.Id.textView3);
+			TVBananaAmount.Text = "Bananas: " + banana_Amount.ToString();
+			TVBananaCost = FindViewById<TextView> (Resource.Id.textView5);
+			TVBananaCost.Text = "Banana Price: " + banana_Cost.ToString();
 			//DEBUG
 			TVCatCost = FindViewById<TextView> (Resource.Id.textView1);
 			TVCatCost.Text = "Cat Price: " + cat_Cost.ToString ();
@@ -120,7 +136,7 @@ namespace ButtonClicker
 
 		private void click_Click (object sender, EventArgs e)
 		{
-			int clickstack = (int)(1 * mult);
+			int clickstack = (banana_Amount + 1);
 
 			//Randomizes a number between 1 and 100, and if the number is less then the cat amount a effect can take place
 			if (randomCatEffectChanse.Next (0, 100) < cat_Amount) {
@@ -168,6 +184,26 @@ namespace ButtonClicker
 			}
 			TVCatCost.Text = "Cat Price: " + cat_Cost.ToString();
 			TVCatAmount.Text = "Cats: " + cat_Amount;
+			TVCurrent.Text = "Current: " + clicks_Current;
+		}
+
+		private void buyBanana_Click (object sender, EventArgs e)
+		{
+			if (clicks_Current >= banana_Cost && banana_Amount < 9) { //Can not buy more than 100 cats
+				banana_Amount++;
+				clicks_Current -= banana_Cost;
+				banana_Cost = (int)(banana_Cost * banana_CostMultiplier);
+			} else if (banana_Amount >= 100) {
+				new AlertDialog.Builder(this)
+					.SetMessage("Stop buying bananas, damn it!")
+					.Show();
+			} else if (clicks_Current < banana_Cost) {
+				new AlertDialog.Builder(this)
+					.SetMessage("You are one poor fuc*er. You can buy 20 more clicks for only 3457,45 SEK")
+					.Show();
+			}
+			TVBananaCost.Text = "Banana Price: " + banana_Cost.ToString();
+			TVBananaAmount.Text = "Banana: " + banana_Amount.ToString();
 			TVCurrent.Text = "Current: " + clicks_Current;
 		}
 		/* //No more SQL will replace with a webservice insted
