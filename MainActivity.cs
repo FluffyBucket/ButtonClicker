@@ -37,14 +37,14 @@ namespace ButtonClicker
 		int cat_Amount = 0;
 		int cat_Cost = 10;
 		double cat_CostMultiplier = 1; 
-<<<<<<< HEAD
-		double mult = 1;
+		
 		bool hasName = false;
-=======
+		string username;
+
 		int banana_Amount = 0;
 		int banana_Cost = 2000;
 		double banana_CostMultiplier = Math.E;
->>>>>>> 8713ea80d0e9e5c43b88c58689b44de766a7c9b7
+
 
 		Random randomCatEffectChanse = new Random();
 		Random effectType = new Random();
@@ -94,33 +94,12 @@ namespace ButtonClicker
 			BtnGiveCat = FindViewById<Button> (Resource.Id.button2);
 			BtnGiveCat.Text = "Debug me cats!";
 			BtnGiveCat.Click += new EventHandler (click_DebugMeCats);
-			//btnSQL = FindViewById<Button> (Resource.Id.btnSQL);
-			//btnSQL.Click += new EventHandler (btnSQL_Click);
+			btnSQL = FindViewById<Button> (Resource.Id.btnSQL);
+			btnSQL.Click += new EventHandler (btnSQL_Click);
+
 			if (hasName == false)
 			{
-				AlertDialog.Builder alert = new AlertDialog.Builder(this);
-
-				alert.setTitle("Title");
-				alert.setMessage("Message");
-
-				// Set an EditText view to get user input 
-				final EditText input = new EditText(this);
-				alert.setView(input);
-
-				alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int whichButton) {
-						String value = input.getText();
-						// Do something with value!
-					}
-				});
-
-				alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int whichButton) {
-						// Canceled.
-					}
-				});
-
-				alert.show();
+				nameEntry ();
 
 			}
 
@@ -206,25 +185,38 @@ namespace ButtonClicker
 			TVBananaAmount.Text = "Banana: " + banana_Amount.ToString();
 			TVCurrent.Text = "Current: " + clicks_Current;
 		}
-		/* //No more SQL will replace with a webservice insted
+
+
+		protected void nameEntry() {
+			var factory = LayoutInflater.From (this);
+			var text_entry_view = factory.Inflate (Resource.Layout.input_dialog, null);
+
+			var builder = new AlertDialog.Builder (this);
+			//builder.SetIconAttribute (Android.Resource.Attribute.DialogIcon);
+			builder.SetTitle (Resource.String.strNameEntryTitle);
+			builder.SetView (text_entry_view);
+			builder.SetPositiveButton ("Ok", OkClicked);
+			builder.Create ();
+			builder.Show();
+
+		}
+
+		private void OkClicked (object sender, DialogClickEventArgs e)
+		{
+			hasName = true;
+
+			username = GetString (Resource.String.usernameEntryText);
+			Toast.MakeText (this, username, ToastLength.Long).Show ();
+			//Toast toast = new Toast.MakeText (this, Resource.String.usernameEntryText.ToString, ToastLength.Long);
+			//toast.Show ();
+		}
+		
+		 //No more SQL will replace with a webservice insted
 		private void btnSQL_Click (object sender, EventArgs e)
 		{
-			string sqlConnectionString = "Data Source=dbadmin.one.com;user id=marlind_net;password=123456789M;database=marlind_net;connection timeout=10";
-			SqlConnection myConnection = new SqlConnection(sqlConnectionString);
+			nameEntry ();
 
-			try
-			{
-				myConnection.Open();
-				Toast.MakeText (this,"I has completed my mission master!", ToastLength.Long).Show();
-				myConnection.Close ();
-			}
-			catch(Exception a)
-			{
-				btnSQL.Text = a.ToString ();
-			}
-
-
-		}*/
+		}
 	}
 }
 

@@ -6,4 +6,7 @@
 	<string name="catButton">Buy 1 Cat</string>
 	<string name="catCount">Cats: 0</string>
 	<string name="currentCount">Current: 0</string>
+	<string name="strNameEntryTitle">Welcome new user!</string>
+	<string name="strNameEntryText">Please enter the user name that you would like to have! :)</string>
+	<string name="usernameEntryText"></string>
 </resources>
