@@ -38,6 +38,7 @@ namespace ButtonClicker
 		int cat_Cost = 10;
 		double cat_CostMultiplier = 1; 
 		double mult = 1;
+		bool hasName = false;
 
 		Random randomCatEffectChanse = new Random();
 		Random effectType = new Random();
@@ -79,6 +80,33 @@ namespace ButtonClicker
 			BtnGiveCat.Click += new EventHandler (click_DebugMeCats);
 			//btnSQL = FindViewById<Button> (Resource.Id.btnSQL);
 			//btnSQL.Click += new EventHandler (btnSQL_Click);
+			if (hasName == false)
+			{
+				AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+				alert.setTitle("Title");
+				alert.setMessage("Message");
+
+				// Set an EditText view to get user input 
+				final EditText input = new EditText(this);
+				alert.setView(input);
+
+				alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int whichButton) {
+						String value = input.getText();
+						// Do something with value!
+					}
+				});
+
+				alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int whichButton) {
+						// Canceled.
+					}
+				});
+
+				alert.show();
+
+			}
 
 		}
 
