@@ -37,14 +37,11 @@ namespace ButtonClicker
 		int cat_Amount = 0;
 		int cat_Cost = 10;
 		double cat_CostMultiplier = 1; 
-<<<<<<< HEAD
-		double mult = 1;
 		bool hasName = false;
-=======
+
 		int banana_Amount = 0;
 		int banana_Cost = 2000;
 		double banana_CostMultiplier = Math.E;
->>>>>>> 8713ea80d0e9e5c43b88c58689b44de766a7c9b7
 
 		Random randomCatEffectChanse = new Random();
 		Random effectType = new Random();
@@ -52,6 +49,7 @@ namespace ButtonClicker
 		private Button BtnClickMe;
 		private Button BtnBuyCat;
 		private Button BtnBuyBanana;
+		private Button BtnOpenShop;
 		private TextView TVClicks;
 		private TextView TVCurrent;
 		private TextView TVCatAmount;
@@ -81,6 +79,11 @@ namespace ButtonClicker
 			BtnBuyBanana.Text = "Buy Banana";
 			BtnBuyBanana.Click += new EventHandler (buyBanana_Click);
 
+			BtnOpenShop = FindViewById<Button> (Resource.Id.button2);
+			BtnOpenShop.Text = Shop;
+			BtnOpenShop.Click += new EventHandler (openShop_click);
+
+
 			TVClicks = FindViewById<TextView> (Resource.Id.tvClickCount);
 			TVCurrent = FindViewById<TextView> (Resource.Id.tvCurrentCount);
 			TVCatAmount = FindViewById<TextView> (Resource.Id.tvCatCount);
@@ -104,7 +107,7 @@ namespace ButtonClicker
 				alert.setMessage("Message");
 
 				// Set an EditText view to get user input 
-				final EditText input = new EditText(this);
+					final EditText input = new EditText(this);
 				alert.setView(input);
 
 				alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
@@ -166,6 +169,11 @@ namespace ButtonClicker
 			TVCurrent.Text = "Current: " + clicks_Current;
 		}
 
+		private void openShop_click (object sender, EventArgs else)
+		{
+			StartActivity(typeof(Activity2));
+		}
+
 		private void buyCat_Click (object sender, EventArgs e)
 		{
 			if (clicks_Current >= cat_Cost && cat_Amount < 100) { //Can not buy more than 100 cats
@@ -189,7 +197,7 @@ namespace ButtonClicker
 
 		private void buyBanana_Click (object sender, EventArgs e)
 		{
-			if (clicks_Current >= banana_Cost && banana_Amount < 9) { //Can not buy more than 100 cats
+			if (clicks_Current >= banana_Cost && banana_Amount < 9) { //Can not buy more than 9 bananas
 				banana_Amount++;
 				clicks_Current -= banana_Cost;
 				banana_Cost = (int)(banana_Cost * banana_CostMultiplier);
