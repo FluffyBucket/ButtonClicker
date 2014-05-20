@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:p1="http://schemas.android.com/apk/res/android"
+    p1:orientation="vertical"
+    p1:minWidth="25px"
+    p1:minHeight="25px"
+    p1:layout_width="match_parent"
+    p1:layout_height="match_parent"
+    p1:id="@+id/linearLayout1">
+    <TableLayout
+        p1:minWidth="25px"
+        p1:minHeight="25px"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/tableLayout1"
+        p1:stretchColumns="1">
+        <TableRow
+            p1:id="@+id/tableRow1">
+            <Button
+                p1:text="Cat"
+                p1:layout_column="0"
+                p1:id="@+id/btnCat" />
+            <TextView
+                p1:text="Cat Price "
+                p1:layout_column="2"
+                p1:id="@+id/tvCat" />
+        </TableRow>
+        <TableRow
+            p1:id="@+id/tableRow2">
+            <Button
+                p1:text="Banana"
+                p1:layout_column="0"
+                p1:id="@+id/btnBanana"
+                p1:layout_width="138.8dp" />
+            <TextView
+                p1:text="Banana Price "
+                p1:layout_column="2"
+                p1:id="@+id/tvBanana" />
+        </TableRow>
+        <TableRow
+            p1:id="@+id/tableRow3"
+            p1:layout_height="wrap_content">
+        </TableRow>
+    </TableLayout>
+    <Button
+        p1:text="Back"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/btnBack"
+        p1:gravity="center" />
+</LinearLayout>

@@ -23,10 +23,8 @@ namespace ButtonClicker
 			NOTE! Change these buttons and texviews names to something better when they have an actual function.
 			- If anyone comes up with new nice cat effects, please write them here below. //Erik
 
-			
-			KNOWN BUGS:
-			- Can buy first cat without enough clicks [Fixed]
-			- Cannot click atm... I'll fix this after dinner.... [Fixed]
+
+			BUG: Shop can not call method in mainActivity since it's stopped.. What about moving whole project into a new class?
 		*/
 
 
@@ -37,21 +35,14 @@ namespace ButtonClicker
 		int cat_Amount = 0;
 		int cat_Cost = 10;
 		double cat_CostMultiplier = 1; 
-<<<<<<< HEAD
-		bool hasName = false;
-=======
-		
+
 		bool hasName = false;
 		string username;
->>>>>>> b30527581d1677ff171feb22e30ea82453b7d0e1
+
 
 		int banana_Amount = 0;
 		int banana_Cost = 2000;
 		double banana_CostMultiplier = Math.E;
-<<<<<<< HEAD
-=======
-
->>>>>>> b30527581d1677ff171feb22e30ea82453b7d0e1
 
 		Random randomCatEffectChanse = new Random();
 		Random effectType = new Random();
@@ -71,6 +62,16 @@ namespace ButtonClicker
 		private TextView TVBananaCost;
 		private Button BtnGiveCat;
 
+		public int CatPrice
+		{
+			get { return cat_Cost; }
+		}
+
+		public int BananaPrice
+		{
+			get { return banana_Cost; }
+		}
+
 
 		protected override void OnCreate (Bundle bundle)
 		{
@@ -89,8 +90,8 @@ namespace ButtonClicker
 			BtnBuyBanana.Text = "Buy Banana";
 			BtnBuyBanana.Click += new EventHandler (buyBanana_Click);
 
-			BtnOpenShop = FindViewById<Button> (Resource.Id.button2);
-			BtnOpenShop.Text = Shop;
+			BtnOpenShop = FindViewById<Button> (Resource.Id.button5);
+			BtnOpenShop.Text = "Shop";
 			BtnOpenShop.Click += new EventHandler (openShop_click);
 
 
@@ -110,46 +111,18 @@ namespace ButtonClicker
 			btnSQL = FindViewById<Button> (Resource.Id.btnSQL);
 			btnSQL.Click += new EventHandler (btnSQL_Click);
 
-			if (hasName == false)
-			{
-<<<<<<< HEAD
-				AlertDialog.Builder alert = new AlertDialog.Builder(this);
-
-				alert.setTitle("Title");
-				alert.setMessage("Message");
-
-				// Set an EditText view to get user input 
-					final EditText input = new EditText(this);
-				alert.setView(input);
-
-				alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int whichButton) {
-						String value = input.getText();
-						// Do something with value!
-					}
-				});
-
-				alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int whichButton) {
-						// Canceled.
-					}
-				});
-
-				alert.show();
-=======
-				nameEntry ();
->>>>>>> b30527581d1677ff171feb22e30ea82453b7d0e1
-
-			}
-
+		
+			
 		}
 
 		private void click_DebugMeCats (object sender, EventArgs e)
 		{
 			//For debug only
-			cat_Amount += 20; if (cat_Amount > 100)
+			/*	cat_Amount += 20; if (cat_Amount > 100)
 				cat_Amount = 100;
-			TVCatAmount.Text = "Cats: " + cat_Amount;
+			TVCatAmount.Text = "Cats: " + cat_Amount; */
+
+			clicks_Current += 100000f;
 		}
 
 		private void click_Click (object sender, EventArgs e)
@@ -182,14 +155,18 @@ namespace ButtonClicker
 
 			TVClicks.Text = "Total: " + clicks_Total;
 			TVCurrent.Text = "Current: " + clicks_Current;
+
+			//Test
+			TVCatCost.Text = "Cat Price: " + cat_Cost.ToString();
+			TVCatAmount.Text = "Cats: " + cat_Amount;
 		}
 
-		private void openShop_click (object sender, EventArgs else)
+		private void openShop_click (object sender, EventArgs e)
 		{
-			StartActivity(typeof(Activity2));
+			StartActivity(typeof(Shop));
 		}
 
-		private void buyCat_Click (object sender, EventArgs e)
+		public void buyCat_Click (object sender, EventArgs e)
 		{
 			if (clicks_Current >= cat_Cost && cat_Amount < 100) { //Can not buy more than 100 cats
 				cat_Amount++;
@@ -197,20 +174,21 @@ namespace ButtonClicker
 				cat_CostMultiplier++;
 				cat_Cost = (int)(cat_Cost * cat_CostMultiplier);
 			} else if (cat_Amount >= 100) {
-				new AlertDialog.Builder(this)
+				/*new AlertDialog.Builder(this)
 					.SetMessage("Stop buying cats, damn it!")
-					.Show();
+					.Show();*/
 			} else if (clicks_Current < cat_Cost) {
-				new AlertDialog.Builder(this)
+				/*		new AlertDialog.Builder(this)
 					.SetMessage("You are one poor fuc*er. You can buy 20 more clicks for only 3457,45 SEK")
-					.Show();
+					.Show(); */
 			}
+			/*
 			TVCatCost.Text = "Cat Price: " + cat_Cost.ToString();
 			TVCatAmount.Text = "Cats: " + cat_Amount;
-			TVCurrent.Text = "Current: " + clicks_Current;
+			TVCurrent.Text = "Current: " + clicks_Current; */
 		}
 
-		private void buyBanana_Click (object sender, EventArgs e)
+		public void buyBanana_Click (object sender, EventArgs e)
 		{
 			if (clicks_Current >= banana_Cost && banana_Amount < 9) { //Can not buy more than 9 bananas
 				banana_Amount++;

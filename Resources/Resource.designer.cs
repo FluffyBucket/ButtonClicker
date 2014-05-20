@@ -63,8 +63,17 @@ namespace ButtonClicker
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f050024
+			public const int btnBack = 2131034148;
+			
+			// aapt resource value: 0x7f050022
+			public const int btnBanana = 2131034146;
+			
 			// aapt resource value: 0x7f050011
 			public const int btnBuyCat = 2131034129;
+			
+			// aapt resource value: 0x7f050020
+			public const int btnCat = 2131034144;
 			
 			// aapt resource value: 0x7f05001c
 			public const int btnClick = 2131034140;
@@ -96,11 +105,17 @@ namespace ButtonClicker
 			// aapt resource value: 0x7f050012
 			public const int button8 = 2131034130;
 			
+			// aapt resource value: 0x7f05001e
+			public const int linearLayout1 = 2131034142;
+			
 			// aapt resource value: 0x7f05000f
 			public const int tableBuy = 2131034127;
 			
 			// aapt resource value: 0x7f050002
 			public const int tableInfo = 2131034114;
+			
+			// aapt resource value: 0x7f05001f
+			public const int tableLayout1 = 2131034143;
 			
 			// aapt resource value: 0x7f050003
 			public const int tableRow1 = 2131034115;
@@ -114,19 +129,14 @@ namespace ButtonClicker
 			// aapt resource value: 0x7f050010
 			public const int tableRow4 = 2131034128;
 			
-<<<<<<< HEAD
 			// aapt resource value: 0x7f050014
 			public const int tableRow5 = 2131034132;
-=======
-			// aapt resource value: 0x7f05000a
-			public const int textView1 = 2131034122;
->>>>>>> ab3d4c7a670afee0146b77f536a7fe550669334c
 			
 			// aapt resource value: 0x7f050018
 			public const int tableRow6 = 2131034136;
 			
-			// aapt resource value: 0x7f050005
-			public const int textView1 = 2131034117;
+			// aapt resource value: 0x7f05000c
+			public const int textView1 = 2131034124;
 			
 			// aapt resource value: 0x7f050006
 			public const int textView2 = 2131034118;
@@ -143,30 +153,26 @@ namespace ButtonClicker
 			// aapt resource value: 0x7f05000e
 			public const int textView6 = 2131034126;
 			
-			// aapt resource value: 0x7f05000c
-			public const int tvCatCount = 2131034124;
+			// aapt resource value: 0x7f050023
+			public const int tvBanana = 2131034147;
 			
-<<<<<<< HEAD
-			// aapt resource value: 0x7f050004
-			public const int tvClickCount = 2131034116;
-=======
-			// aapt resource value: 0x7f050006
-			public const int tvCatCount = 2131034118;
->>>>>>> ab3d4c7a670afee0146b77f536a7fe550669334c
+			// aapt resource value: 0x7f050021
+			public const int tvCat = 2131034145;
 			
 			// aapt resource value: 0x7f050008
-			public const int tvCurrentCount = 2131034120;
+			public const int tvCatCount = 2131034120;
 			
-<<<<<<< HEAD
+			// aapt resource value: 0x7f050004
+			public const int tvClickCount = 2131034116;
+			
+			// aapt resource value: 0x7f050005
+			public const int tvCurrentCount = 2131034117;
+			
 			// aapt resource value: 0x7f050001
 			public const int username_edit = 2131034113;
 			
 			// aapt resource value: 0x7f050000
 			public const int username_view = 2131034112;
-=======
-			// aapt resource value: 0x7f050003
-			public const int tvCurrentCount = 2131034115;
->>>>>>> ab3d4c7a670afee0146b77f536a7fe550669334c
 			
 			static Id()
 			{
@@ -187,8 +193,8 @@ namespace ButtonClicker
 			// aapt resource value: 0x7f030001
 			public const int Main = 2130903041;
 			
-			// aapt resource value: 0x7f030001
-			public const int Shop = 2130903041;
+			// aapt resource value: 0x7f030002
+			public const int Shop = 2130903042;
 			
 			static Layout()
 			{
