@@ -23,11 +23,8 @@ namespace ButtonClicker
 			NOTE! Change these buttons and texviews names to something better when they have an actual function.
 			- If anyone comes up with new nice cat effects, please write them here below. //Erik
 
-
-			BUG: Shop can not call method in mainActivity since it's stopped.. What about moving whole project into a new class?
 		*/
 
-		//Bundle param;
 
 		//Global vars
 
@@ -114,7 +111,6 @@ namespace ButtonClicker
 		private void openShop_click (object sender, EventArgs e)
 		{
 			var shop = new Intent(this, typeof(Shop));
-			//	shop.PutExtra("base", b);
 	 		StartActivity(shop);
 		}
 			

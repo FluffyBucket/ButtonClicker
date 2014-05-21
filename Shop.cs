@@ -45,8 +45,10 @@ namespace ButtonClicker
 			TVCurrent = FindViewById<TextView> (Resource.Id.tvCurrent);
 
 			IVCat = FindViewById<ImageView> (Resource.Id.ivCat);
+			IVCat.SetImageResource (Resource.Drawable.Cat);
 
 			IVBanana = FindViewById<ImageView> (Resource.Id.ivBanana);
+			IVBanana.SetImageResource (Resource.Drawable.Banana);
 			// Create your application here
 			Update ();
 		}
@@ -54,19 +56,37 @@ namespace ButtonClicker
 		private void Update()
 		{
 			TVCurrent.Text = "Current clicks: " + Base.clicks_Current;
-			TVCatPrice.Text = "Cat price: " + Base.cat_Cost+ " ";
-			TVBananaPrice.Text = "Banana price: " + Base.banana_Cost + " ";
+			TVCatPrice.Text = "Price: " + Base.cat_Cost+ " ";
+			TVBananaPrice.Text = "Price: " + Base.banana_Cost + " ";
 		}
 
 		private void BuyCat_click (object sender, EventArgs e)
 		{
-			Base.BuyCat ();
+			switch (Base.BuyCat ()) {
+			case 0:
+				break;
+			case 1:
+				Toast.MakeText (this, "To many cats...", ToastLength.Short).Show ();
+				break;
+			case 2: 
+				Toast.MakeText (this, "Insufficient funds...", ToastLength.Short).Show ();
+				break;
+			}
 			Update ();
 		}
 
 		private void BuyBanana_click (object sender, EventArgs e)
 		{
-			Base.BuyBanana ();
+			switch (Base.BuyBanana ()) {
+			case 0:
+				break;
+			case 1:
+				Toast.MakeText (this, "To many cats...", ToastLength.Short).Show ();
+				break;
+			case 2: 
+				Toast.MakeText (this, "Insufficient funds...", ToastLength.Short).Show ();
+				break;
+			}
 			Update ();
 		}
 

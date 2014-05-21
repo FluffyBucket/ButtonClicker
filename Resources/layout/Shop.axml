@@ -23,17 +23,19 @@
             <Button
                 p1:text="Cat"
                 p1:layout_column="0"
-                p1:id="@+id/btnCat" />
+                p1:id="@+id/btnCat"
+                p1:layout_marginRight="0.0dp" />
             <ImageView
                 p1:src="@android:drawable/ic_menu_gallery"
                 p1:layout_column="1"
                 p1:id="@+id/ivCat"
-                p1:layout_width="wrap_content"
+                p1:layout_width="62.0dp"
                 p1:layout_height="match_parent" />
             <TextView
                 p1:text="Cat Price "
                 p1:layout_column="2"
-                p1:id="@+id/tvCat" />
+                p1:id="@+id/tvCat"
+                p1:layout_width="153.6dp" />
         </TableRow>
         <TableRow
             p1:id="@+id/tableRow2">
@@ -41,12 +43,12 @@
                 p1:text="Banana"
                 p1:layout_column="0"
                 p1:id="@+id/btnBanana"
-                p1:layout_width="138.8dp" />
+                p1:layout_width="97.8dp" />
             <ImageView
                 p1:src="@android:drawable/ic_menu_gallery"
                 p1:layout_column="1"
                 p1:id="@+id/ivBanana"
-                p1:layout_width="wrap_content"
+                p1:layout_width="38.7dp"
                 p1:layout_height="match_parent" />
             <TextView
                 p1:text="Banana Price "
