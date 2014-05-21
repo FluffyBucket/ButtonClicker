@@ -6,6 +6,11 @@
     p1:layout_width="match_parent"
     p1:layout_height="match_parent"
     p1:id="@+id/linearLayout1">
+    <TextView
+        p1:text="Current: "
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/tvCurrent" />
     <TableLayout
         p1:minWidth="25px"
         p1:minHeight="25px"
@@ -19,6 +24,12 @@
                 p1:text="Cat"
                 p1:layout_column="0"
                 p1:id="@+id/btnCat" />
+            <ImageView
+                p1:src="@android:drawable/ic_menu_gallery"
+                p1:layout_column="1"
+                p1:id="@+id/ivCat"
+                p1:layout_width="wrap_content"
+                p1:layout_height="match_parent" />
             <TextView
                 p1:text="Cat Price "
                 p1:layout_column="2"
@@ -31,6 +42,12 @@
                 p1:layout_column="0"
                 p1:id="@+id/btnBanana"
                 p1:layout_width="138.8dp" />
+            <ImageView
+                p1:src="@android:drawable/ic_menu_gallery"
+                p1:layout_column="1"
+                p1:id="@+id/ivBanana"
+                p1:layout_width="wrap_content"
+                p1:layout_height="match_parent" />
             <TextView
                 p1:text="Banana Price "
                 p1:layout_column="2"

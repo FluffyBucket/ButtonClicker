@@ -14,23 +14,25 @@ namespace ButtonClicker
 	[Activity (Label = "Shop")]			
 	public class Shop : Activity
 	{
-		MainActivity main;
+
 		private Button btnBuyCat;
 		private Button btnBuyBanana;
 		private Button btnBack;
 
+		private TextView TVCurrent;
 		private TextView TVCatPrice;
 		private TextView TVBananaPrice;
+
+		private ImageView IVCat;
+		private ImageView IVBanana;
 
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
 			SetContentView (Resource.Layout.Shop);
 
-			main = new MainActivity();
-
 			btnBuyCat = FindViewById<Button> (Resource.Id.btnCat);
-			btnBuyCat.Click += new EventHandler (main.buyCat_Click);
+			btnBuyCat.Click += new EventHandler (BuyCat_click);
 
 			btnBuyBanana = FindViewById<Button> (Resource.Id.btnBanana);
 			btnBuyBanana.Click += new EventHandler (BuyBanana_click);
@@ -39,29 +41,39 @@ namespace ButtonClicker
 			btnBack.Click += new EventHandler (Back_click);
 
 			TVCatPrice = FindViewById<TextView> (Resource.Id.tvCat);
-			TVCatPrice.Text = "Cat price: " + main.CatPrice.ToString () + " ";
-
 			TVBananaPrice = FindViewById<TextView> (Resource.Id.tvBanana);
-			TVBananaPrice.Text = "Banana price: " + main.BananaPrice.ToString () + " ";
+			TVCurrent = FindViewById<TextView> (Resource.Id.tvCurrent);
+
+			IVCat = FindViewById<ImageView> (Resource.Id.ivCat);
+
+			IVBanana = FindViewById<ImageView> (Resource.Id.ivBanana);
 			// Create your application here
+			Update ();
+		}
+
+		private void Update()
+		{
+			TVCurrent.Text = "Current clicks: " + Base.clicks_Current;
+			TVCatPrice.Text = "Cat price: " + Base.cat_Cost+ " ";
+			TVBananaPrice.Text = "Banana price: " + Base.banana_Cost + " ";
 		}
 
 		private void BuyCat_click (object sender, EventArgs e)
 		{
-			main.buyCat_Click(null, null) ;
-			TVCatPrice.Text = "Cat price: " + main.CatPrice.ToString () + " ";
+			Base.BuyCat ();
+			Update ();
 		}
 
 		private void BuyBanana_click (object sender, EventArgs e)
 		{
-			main.buyBanana_Click(null, null);
-			TVBananaPrice.Text = "Banana price: " + main.BananaPrice.ToString () + " ";
+			Base.BuyBanana ();
+			Update ();
 		}
 
 		private void Back_click (object sender, EventArgs e)
 		{
 			this.Finish ();
-		}
+		} 
 	}
 }
 

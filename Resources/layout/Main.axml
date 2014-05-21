@@ -22,11 +22,6 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/tvCurrentCount"
                 android:layout_column="1" />
-            <TextView
-                android:text="Text2"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_column="2"
-                android:id="@+id/textView2" />
         </TableRow>
         <TableRow
             android:id="@+id/tableRow2">
@@ -40,11 +35,6 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_column="1"
                 android:id="@+id/textView3" />
-            <TextView
-                android:text="Text4"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_column="2"
-                android:id="@+id/textView4" />
         </TableRow>
         <TableRow
             android:id="@+id/tableRow3">
@@ -58,68 +48,6 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_column="1"
                 android:id="@+id/textView5" />
-            <TextView
-                android:text="Text6"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_column="2"
-                android:id="@+id/textView6" />
-        </TableRow>
-    </TableLayout>
-    <TableLayout
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tableBuy"
-        android:shrinkColumns="*"
-        android:stretchColumns="*">
-        <TableRow
-            android:id="@+id/tableRow4"
-            android:layout_width="wrap_content">
-            <Button
-                android:text="@string/catButton"
-                android:id="@+id/btnBuyCat"
-                android:layout_column="0"
-                android:layout_width="wrap_content" />
-            <Button
-                android:text="Button8"
-                android:layout_column="1"
-                android:id="@+id/button8" />
-            <Button
-                android:text="Button1"
-                android:layout_column="2"
-                android:id="@+id/button1"
-                android:layout_width="match_parent" />
-        </TableRow>
-        <TableRow
-            android:id="@+id/tableRow5">
-            <Button
-                android:text="Button2"
-                android:layout_column="0"
-                android:id="@+id/button2" />
-            <Button
-                android:text="Button3"
-                android:layout_column="1"
-                android:id="@+id/button3" />
-            <Button
-                android:text="Button4"
-                android:layout_column="2"
-                android:id="@+id/button4" />
-        </TableRow>
-        <TableRow
-            android:id="@+id/tableRow6">
-            <Button
-                android:text="Button5"
-                android:layout_column="0"
-                android:id="@+id/button5" />
-            <Button
-                android:text="Button6"
-                android:id="@+id/button6"
-                android:layout_column="1" />
-            <Button
-                android:text="Button7"
-                android:layout_column="2"
-                android:id="@+id/button7" />
         </TableRow>
     </TableLayout>
     <Button
@@ -130,6 +58,16 @@
         android:fadingEdge="none"
         android:layout_width="match_parent"
         android:layout_height="100dp" />
+    <Button
+        android:text="Button5"
+        android:id="@+id/button5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:text="Button2"
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
     <Button
         android:text="SQL Me"
         android:id="@+id/btnSQL"
