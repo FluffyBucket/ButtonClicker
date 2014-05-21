@@ -30,7 +30,7 @@ namespace ButtonClicker
 
 
 		bool hasName = false;
-		string username;
+		string username = "Default";
 
 		Random randomCatEffectChanse = new Random();
 		Random effectType = new Random();
@@ -86,6 +86,13 @@ namespace ButtonClicker
 			Update();
 		}
 
+		protected void OnStart (Bundle bundle)
+		{
+			base.OnStart(); // Always call the superclass first.
+
+			Update ();
+		}
+
 		public void Update()
 		{
 			TVClicks.Text = "Total: " + Base.clicks_Total;
@@ -126,13 +133,13 @@ namespace ButtonClicker
 			builder.Create ();
 			builder.Show();
 
+
 		}
 
 		private void OkClicked (object sender, DialogClickEventArgs e)
 		{
 			hasName = true;
 
-			username = GetString (Resource.String.usernameEntryText);
 			Toast.MakeText (this, username, ToastLength.Long).Show ();
 			//Toast toast = new Toast.MakeText (this, Resource.String.usernameEntryText.ToString, ToastLength.Long);
 			//toast.Show ();
