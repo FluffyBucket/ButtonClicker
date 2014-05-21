@@ -34,6 +34,7 @@
     <WarningLevel>4</WarningLevel>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <ConsolePause>false</ConsolePause>
+    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -61,6 +62,9 @@
     <AndroidResource Include="Resources\drawable\m_approve.png" />
     <AndroidResource Include="Resources\layout\Shop.axml" />
     <AndroidResource Include="Resources\layout\input_dialog.axml" />
+    <AndroidResource Include="Resources\drawable\Banan.png" />
+    <AndroidResource Include="Resources\drawable\Bananklase.png" />
+    <AndroidResource Include="Resources\drawable\Programkatt.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
