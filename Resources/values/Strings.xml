@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="hello">Click Me!</string>
 	<string name="clicks">Total: 0</string>
@@ -7,6 +7,6 @@
 	<string name="catCount">Cats: 0</string>
 	<string name="currentCount">Current: 0</string>
 	<string name="strNameEntryTitle">Welcome new user!</string>
-	<string name="strNameEntryText">Please enter the user name that you would like to have! :)</string>
+	<string name="strNameEntryText">Please enter a username.</string>
 	<string name="usernameEntryText"></string>
 </resources>

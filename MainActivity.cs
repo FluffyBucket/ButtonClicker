@@ -32,6 +32,9 @@ namespace ButtonClicker
 		bool hasName = false;
 		string username = "Default";
 
+		EditText Username_input;
+		Button btnOK;
+
 		Random randomCatEffectChanse = new Random();
 		Random effectType = new Random();
 
@@ -83,6 +86,8 @@ namespace ButtonClicker
 			btnSQL = FindViewById<Button> (Resource.Id.btnSQL);
 			btnSQL.Click += new EventHandler (btnSQL_Click);
 
+
+
 			Update();
 		}
 
@@ -122,24 +127,18 @@ namespace ButtonClicker
 		}
 			
 		protected void nameEntry() {
-			var factory = LayoutInflater.From (this);
-			var text_entry_view = factory.Inflate (Resource.Layout.input_dialog, null);
-
-			var builder = new AlertDialog.Builder (this);
-			//builder.SetIconAttribute (Android.Resource.Attribute.DialogIcon);
-			builder.SetTitle (Resource.String.strNameEntryTitle);
-			builder.SetView (text_entry_view);
-			builder.SetPositiveButton ("Ok", OkClicked);
-			builder.Create ();
-			builder.Show();
-
-
+		
+			SetContentView(Resource.Layout.input_dialog);
+			Username_input = FindViewById<EditText> (Resource.Id.evUsername);
+			btnOK = FindViewById<Button> (Resource.Id.btnOK);
+			btnOK.Click += new EventHandler (OkClicked);
 		}
 
-		private void OkClicked (object sender, DialogClickEventArgs e)
+		private void OkClicked (object sender, EventArgs e)
 		{
+			username = Username_input.Text;
 			hasName = true;
-
+			SetContentView(Resource.Layout.Main);
 			Toast.MakeText (this, username, ToastLength.Long).Show ();
 			//Toast toast = new Toast.MakeText (this, Resource.String.usernameEntryText.ToString, ToastLength.Long);
 			//toast.Show ();
@@ -149,7 +148,6 @@ namespace ButtonClicker
 		private void btnSQL_Click (object sender, EventArgs e)
 		{
 			nameEntry ();
-
 		}
 	}
 }
