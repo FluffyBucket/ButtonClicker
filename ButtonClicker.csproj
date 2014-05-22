@@ -68,7 +68,5 @@
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Classes\" />
-    <Folder Include="Ny mapp\" />
-    <Folder Include="Ny mapp1\" />
   </ItemGroup>
 </Project>

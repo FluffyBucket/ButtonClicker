@@ -27,16 +27,11 @@ namespace ButtonClicker
 
 
 		//Global vars
+		private Bundle bundle;
+		private string username;
 
-
-		bool hasName = false;
-		string username = "Default";
-
-		EditText Username_input;
-		Button btnOK;
-
-		Random randomCatEffectChanse = new Random();
-		Random effectType = new Random();
+		private EditText Username_input;
+		private Button btnOK;
 
 		private Button BtnClickMe;
 		private Button BtnOpenShop;
@@ -54,25 +49,16 @@ namespace ButtonClicker
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
+			this.bundle = bundle;
 			// Set our view from the "main" layout resource
 			SetContentView (Resource.Layout.Main);
-
-			//If logged in....
-
-			//else
-			Base.LoadValues (0, 0, 0, 10, 0, 2000);
-
-
 
 			//LAYOUT STUFF
 			BtnClickMe = FindViewById<Button> (Resource.Id.btnClick);
 			BtnClickMe.Click += new EventHandler (click_Click);
-
-
 			BtnOpenShop = FindViewById<Button> (Resource.Id.button5);
 			BtnOpenShop.Text = "Shop";
 			BtnOpenShop.Click += new EventHandler (openShop_click);
-
 			TVClicks = FindViewById<TextView> (Resource.Id.tvClickCount);
 			TVCurrent = FindViewById<TextView> (Resource.Id.tvCurrentCount);
 			TVCatAmount = FindViewById<TextView> (Resource.Id.tvCatCount);
@@ -86,15 +72,21 @@ namespace ButtonClicker
 			btnSQL = FindViewById<Button> (Resource.Id.btnSQL);
 			btnSQL.Click += new EventHandler (btnSQL_Click);
 
+			if (username == null) {
+				Base.LoadValues (0, 0, 0, 10, 0, 2000);
+				nameEntry ();
+			} else {
+				//If already logged in..
+				// Base.LoadValues (VALUES FROM SERVER);
 
-
+			}
+			this.Title = "ButtonClicker - " + username; //Displays username in title... Obviously.
 			Update();
 		}
 
 		protected void OnStart (Bundle bundle)
 		{
 			base.OnStart(); // Always call the superclass first.
-
 			Update ();
 		}
 
@@ -136,12 +128,17 @@ namespace ButtonClicker
 
 		private void OkClicked (object sender, EventArgs e)
 		{
+			//if (USERNAME IS OK) {
 			username = Username_input.Text;
-			hasName = true;
-			SetContentView(Resource.Layout.Main);
+			//Recreates activity after entered username
+			OnCreate (bundle);
 			Toast.MakeText (this, username, ToastLength.Long).Show ();
-			//Toast toast = new Toast.MakeText (this, Resource.String.usernameEntryText.ToString, ToastLength.Long);
-			//toast.Show ();
+			Update (); 
+			//} else {
+			//Toast.MakeText (this, "Username already exists", ToastLength.Long).Show ();}
+
+
+
 		}
 		
 		 //No more SQL will replace with a webservice insted

@@ -1,10 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="MainActivity.cs">
     <Files>
-      <File FileName="MainActivity.cs" Line="61" Column="4" />
-      <File FileName="Classes\Base.cs" Line="80" Column="69" />
-      <File FileName="Shop.cs" Line="72" Column="46" />
+      <File FileName="MainActivity.cs" Line="145" Column="50" />
+      <File FileName="Classes\Base.cs" Line="67" Column="6" />
+      <File FileName="Shop.cs" Line="95" Column="19" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
