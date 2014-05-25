@@ -17,11 +17,6 @@ namespace ButtonClicker
 		private static Random randomCatEffectChanse = new Random();
 		private static Random effectType = new Random();
 
-		/*	public Base ()
-		{
-
-		} */
-
 		public static void LoadValues (int CC, int CT, int CatA, int CatC, int BananaA, int BananaC)
 		{
 			clicks_Current = CC;
@@ -52,7 +47,7 @@ namespace ButtonClicker
 			int clickstack = (banana_Amount + 1);
 
 			//Randomizes a number between 1 and 100, and if the number is less then the cat amount a effect can take place
-			if (randomCatEffectChanse.Next (0, 100) < cat_Amount) {
+			if (randomCatEffectChanse.Next (0, 101) < cat_Amount) {
 
 				//Choise of effect
 				switch (effectType.Next (1, 4)) { //Min: Lowest possible, Max: One above highest

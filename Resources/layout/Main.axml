@@ -73,4 +73,10 @@
         android:id="@+id/btnSQL"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
+    <Button
+        android:text="Reset prefs and username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnReset"
+        android:autoText="false" />
 </LinearLayout>

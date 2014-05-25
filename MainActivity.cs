@@ -5,8 +5,14 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+<<<<<<< HEAD
 using System.Data;
 using System.Data.SqlClient;
+=======
+using Android.Preferences;
+//using System.Data;
+//using System.Data.SqlClient;
+>>>>>>> ebd6530bdc7ed7f506d078a8e04f147266ebdf93
 
 namespace ButtonClicker
 {
@@ -27,16 +33,13 @@ namespace ButtonClicker
 
 
 		//Global vars
+		private Bundle bundle;
+		private string username;
 
-
-		bool hasName = false;
-		string username = "Default";
-
-		EditText Username_input;
-		Button btnOK;
-
-		Random randomCatEffectChanse = new Random();
-		Random effectType = new Random();
+		ISharedPreferences prefs;
+		ISharedPreferencesEditor editor;
+		private EditText Username_input;
+		private Button btnOK;
 
 		private Button BtnClickMe;
 		private Button BtnOpenShop;
@@ -50,29 +53,21 @@ namespace ButtonClicker
 		private TextView TVCatCost;
 		private TextView TVBananaCost;
 		private Button BtnGiveCat;
+		private Button btnReset;
 
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
+			this.bundle = bundle;
 			// Set our view from the "main" layout resource
 			SetContentView (Resource.Layout.Main);
-
-			//If logged in....
-
-			//else
-			Base.LoadValues (0, 0, 0, 10, 0, 2000);
-
-
 
 			//LAYOUT STUFF
 			BtnClickMe = FindViewById<Button> (Resource.Id.btnClick);
 			BtnClickMe.Click += new EventHandler (click_Click);
-
-
 			BtnOpenShop = FindViewById<Button> (Resource.Id.button5);
 			BtnOpenShop.Text = "Shop";
 			BtnOpenShop.Click += new EventHandler (openShop_click);
-
 			TVClicks = FindViewById<TextView> (Resource.Id.tvClickCount);
 			TVCurrent = FindViewById<TextView> (Resource.Id.tvCurrentCount);
 			TVCatAmount = FindViewById<TextView> (Resource.Id.tvCatCount);
@@ -86,15 +81,33 @@ namespace ButtonClicker
 			btnSQL = FindViewById<Button> (Resource.Id.btnSQL);
 			btnSQL.Click += new EventHandler (btnSQL_Click);
 
+			btnReset = FindViewById<Button> (Resource.Id.btnReset);
+			btnReset.Click += new EventHandler (RESET);
 
+				prefs = PreferenceManager.GetDefaultSharedPreferences(this); 
+				editor = prefs.Edit();
+				/*editor.PutInt(("number_of_times_accessed", accessCount++);
+					editor.PutString("date_last_accessed", DateTime.Now.ToString("yyyy-MMM-dd"));
+					editor.Apply();*/
 
+			username = prefs.GetString ("username", null);
+			if (username == null) {
+				Base.LoadValues (0, 0, 0, 10, 0, 2000);
+				nameEntry ();
+			} else {
+					username = prefs.GetString ("username", null); 
+				/*	if (CAN CONNECT)
+				{LOAD BASEVALUES}
+				else
+				{Terminate the bastard.}*/
+			}
+			this.Title = "ButtonClicker - " + username; //Displays username in title... Obviously.
 			Update();
 		}
 
 		protected void OnStart (Bundle bundle)
 		{
 			base.OnStart(); // Always call the superclass first.
-
 			Update ();
 		}
 
@@ -106,6 +119,13 @@ namespace ButtonClicker
 			TVBananaCost.Text = "Banana Price: " + Base.banana_Cost;
 			TVCatCost.Text = "Cat Price: " + Base.cat_Cost;
 			TVCatAmount.Text = "Cats: " + Base.cat_Amount;
+		}
+
+		private void RESET (object sender, EventArgs e)
+		{
+			editor.Clear ();
+			editor.Commit ();
+			Toast.MakeText (this, "Please restart application now", ToastLength.Long).Show ();
 		}
 
 		private void click_DebugMeCats (object sender, EventArgs e)
@@ -136,12 +156,19 @@ namespace ButtonClicker
 
 		private void OkClicked (object sender, EventArgs e)
 		{
+			//if (USERNAME IS OK) {
 			username = Username_input.Text;
-			hasName = true;
-			SetContentView(Resource.Layout.Main);
+			editor.PutString ("username", username);
+				editor.Commit ();
+			//Recreates activity after entered username
+			OnCreate (bundle);
 			Toast.MakeText (this, username, ToastLength.Long).Show ();
-			//Toast toast = new Toast.MakeText (this, Resource.String.usernameEntryText.ToString, ToastLength.Long);
-			//toast.Show ();
+			Update (); 
+			//} else {
+			//Toast.MakeText (this, "Username already exists", ToastLength.Long).Show ();}
+
+
+
 		}
 		
 		 //No more SQL will replace with a webservice insted
