@@ -5,6 +5,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Android.Preferences;
 //using System.Data;
 //using System.Data.SqlClient;
 
@@ -30,6 +31,8 @@ namespace ButtonClicker
 		private Bundle bundle;
 		private string username;
 
+		ISharedPreferences prefs;
+		ISharedPreferencesEditor editor;
 		private EditText Username_input;
 		private Button btnOK;
 
@@ -45,6 +48,7 @@ namespace ButtonClicker
 		private TextView TVCatCost;
 		private TextView TVBananaCost;
 		private Button BtnGiveCat;
+		private Button btnReset;
 
 		protected override void OnCreate (Bundle bundle)
 		{
@@ -72,13 +76,25 @@ namespace ButtonClicker
 			btnSQL = FindViewById<Button> (Resource.Id.btnSQL);
 			btnSQL.Click += new EventHandler (btnSQL_Click);
 
+			btnReset = FindViewById<Button> (Resource.Id.btnReset);
+			btnReset.Click += new EventHandler (RESET);
+
+				prefs = PreferenceManager.GetDefaultSharedPreferences(this); 
+				editor = prefs.Edit();
+				/*editor.PutInt(("number_of_times_accessed", accessCount++);
+					editor.PutString("date_last_accessed", DateTime.Now.ToString("yyyy-MMM-dd"));
+					editor.Apply();*/
+
+			username = prefs.GetString ("username", null);
 			if (username == null) {
 				Base.LoadValues (0, 0, 0, 10, 0, 2000);
 				nameEntry ();
 			} else {
-				//If already logged in..
-				// Base.LoadValues (VALUES FROM SERVER);
-
+					username = prefs.GetString ("username", null); 
+				/*	if (CAN CONNECT)
+				{LOAD BASEVALUES}
+				else
+				{Terminate the bastard.}*/
 			}
 			this.Title = "ButtonClicker - " + username; //Displays username in title... Obviously.
 			Update();
@@ -98,6 +114,13 @@ namespace ButtonClicker
 			TVBananaCost.Text = "Banana Price: " + Base.banana_Cost;
 			TVCatCost.Text = "Cat Price: " + Base.cat_Cost;
 			TVCatAmount.Text = "Cats: " + Base.cat_Amount;
+		}
+
+		private void RESET (object sender, EventArgs e)
+		{
+			editor.Clear ();
+			editor.Commit ();
+			Toast.MakeText (this, "Please restart application now", ToastLength.Long).Show ();
 		}
 
 		private void click_DebugMeCats (object sender, EventArgs e)
@@ -130,6 +153,8 @@ namespace ButtonClicker
 		{
 			//if (USERNAME IS OK) {
 			username = Username_input.Text;
+			editor.PutString ("username", username);
+				editor.Commit ();
 			//Recreates activity after entered username
 			OnCreate (bundle);
 			Toast.MakeText (this, username, ToastLength.Long).Show ();
