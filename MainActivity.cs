@@ -5,8 +5,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
-//using System.Data;
-//using System.Data.SqlClient;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace ButtonClicker
 {
@@ -147,7 +147,20 @@ namespace ButtonClicker
 		 //No more SQL will replace with a webservice insted
 		private void btnSQL_Click (object sender, EventArgs e)
 		{
-			nameEntry ();
+			string sqlConnectionString = "server=10.0.2.2:3306;user id=master;password=master;database=test_1;connection timeout=10";
+			SqlConnection myConnection = new SqlConnection(sqlConnectionString);
+
+			try
+			{
+				myConnection.Open();
+				Toast.MakeText (this,"I has completed my mission master!", ToastLength.Long).Show();
+				myConnection.Close ();
+			}
+			catch(Exception a)
+			{
+				Toast.MakeText (this,a.ToString(), ToastLength.Long).Show();
+			}
+
 		}
 	}
 }
