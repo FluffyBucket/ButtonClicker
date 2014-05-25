@@ -11,7 +11,7 @@ namespace ButtonClicker
 		public static int banana_Amount;
 		public static int banana_Cost;
 
-		private static int cat_CostMultiplier = 2; 
+		private static double cat_CostMultiplier = 1.2f; 
 		private static double banana_CostMultiplier = Math.E;
 
 		private static Random randomCatEffectChanse = new Random();
@@ -39,7 +39,7 @@ namespace ButtonClicker
 
 		public static void Debug ()
 		{
-			clicks_Current += 100000;
+			clicks_Current += 10000000;
 		}
 
 		public static void Click ()

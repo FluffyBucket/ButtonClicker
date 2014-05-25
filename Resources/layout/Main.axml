@@ -36,19 +36,6 @@
                 android:layout_column="1"
                 android:id="@+id/textView3" />
         </TableRow>
-        <TableRow
-            android:id="@+id/tableRow3">
-            <TextView
-                android:text="Text1"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/textView1"
-                android:layout_column="0" />
-            <TextView
-                android:text="Text5"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_column="1"
-                android:id="@+id/textView5" />
-        </TableRow>
     </TableLayout>
     <Button
         android:id="@+id/btnClick"

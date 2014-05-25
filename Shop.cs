@@ -81,7 +81,7 @@ namespace ButtonClicker
 			case 0:
 				break;
 			case 1:
-				Toast.MakeText (this, "To many cats...", ToastLength.Short).Show ();
+				Toast.MakeText (this, "To many bananas...", ToastLength.Short).Show ();
 				break;
 			case 2: 
 				Toast.MakeText (this, "Insufficient funds...", ToastLength.Short).Show ();

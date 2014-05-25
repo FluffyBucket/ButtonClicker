@@ -67,15 +67,14 @@ namespace ButtonClicker
 			TVCurrent = FindViewById<TextView> (Resource.Id.tvCurrentCount);
 			TVCatAmount = FindViewById<TextView> (Resource.Id.tvCatCount);
 			TVBananaAmount = FindViewById<TextView> (Resource.Id.textView3);
-			TVBananaCost = FindViewById<TextView> (Resource.Id.textView5);
-			//DEBUG
-			TVCatCost = FindViewById<TextView> (Resource.Id.textView1);
+
 			BtnGiveCat = FindViewById<Button> (Resource.Id.button2);
 			BtnGiveCat.Text = "Im a developer";
 			BtnGiveCat.Click += new EventHandler (click_DebugMeCats);
+			BtnGiveCat.Visibility = ViewStates.Gone;
 			btnSQL = FindViewById<Button> (Resource.Id.btnSQL);
 			btnSQL.Click += new EventHandler (btnSQL_Click);
-
+			btnSQL.Visibility = ViewStates.Gone;
 			btnReset = FindViewById<Button> (Resource.Id.btnReset);
 			btnReset.Click += new EventHandler (RESET);
 
@@ -89,12 +88,20 @@ namespace ButtonClicker
 			if (username == null) {
 				Base.LoadValues (0, 0, 0, 10, 0, 2000);
 				nameEntry ();
-			} else {
-					username = prefs.GetString ("username", null); 
-				/*	if (CAN CONNECT)
-				{LOAD BASEVALUES}
-				else
-				{Terminate the bastard.}*/
+			} else if (username == "Haxxor!") {
+				Base.LoadValues (0, 0, 0, 10, 0, 2000);
+				BtnGiveCat.Visibility = ViewStates.Visible;
+				btnSQL.Visibility = ViewStates.Visible;
+
+			}
+			else {
+				Base.LoadValues (
+					prefs.GetInt ("clickcount", 0),
+					prefs.GetInt ("clicktotal", 0),
+					prefs.GetInt ("catamount", 0),
+					prefs.GetInt ("catcost", 10),
+					prefs.GetInt ("bananaamount", 0),
+					prefs.GetInt ("bananacost", 2000));
 			}
 			this.Title = "ButtonClicker - " + username; //Displays username in title... Obviously.
 			Update();
@@ -111,9 +118,15 @@ namespace ButtonClicker
 			TVClicks.Text = "Total: " + Base.clicks_Total;
 			TVCurrent.Text = "Current: " + Base.clicks_Current;
 			TVBananaAmount.Text = "Bananans: " + Base.banana_Amount;
-			TVBananaCost.Text = "Banana Price: " + Base.banana_Cost;
-			TVCatCost.Text = "Cat Price: " + Base.cat_Cost;
 			TVCatAmount.Text = "Cats: " + Base.cat_Amount;
+
+			editor.PutInt ("clickcount", Base.clicks_Current);
+			editor.PutInt ("clicktotal", Base.clicks_Total);
+			editor.PutInt ("catamount", Base.cat_Amount);
+			editor.PutInt ("catcost", Base.cat_Cost);
+			editor.PutInt ("bananaamount", Base.banana_Amount);
+			editor.PutInt ("bananacost", Base.banana_Cost);
+			editor.Commit ();
 		}
 
 		private void RESET (object sender, EventArgs e)
@@ -151,13 +164,18 @@ namespace ButtonClicker
 
 		private void OkClicked (object sender, EventArgs e)
 		{
-			//if (USERNAME IS OK) {
+			//if (USERNAME IS OK) 
 			username = Username_input.Text;
-			editor.PutString ("username", username);
+			if (username != "Admin" && username != "admin" && username != "Admin " && username != "admin " && username != "") {
+				editor.PutString ("username", username);
 				editor.Commit ();
-			//Recreates activity after entered username
-			OnCreate (bundle);
-			Toast.MakeText (this, username, ToastLength.Long).Show ();
+				//Recreates activity after entered username
+				OnCreate (bundle);
+				Toast.MakeText (this, username, ToastLength.Long).Show ();
+			}
+			else {
+				Toast.MakeText (this, "Come on, what the fuck did you expect?", ToastLength.Long).Show ();
+			}
 			Update (); 
 			//} else {
 			//Toast.MakeText (this, "Username already exists", ToastLength.Long).Show ();}
