@@ -5,14 +5,11 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
-<<<<<<< HEAD
 using System.Data;
 using System.Data.SqlClient;
-=======
 using Android.Preferences;
 //using System.Data;
 //using System.Data.SqlClient;
->>>>>>> ebd6530bdc7ed7f506d078a8e04f147266ebdf93
 
 namespace ButtonClicker
 {
@@ -118,6 +115,12 @@ namespace ButtonClicker
 			Update ();
 		}
 
+		protected override void OnResume()
+		{
+			base.OnResume();
+			Update();
+		}
+
 		public void Update()
 		{
 			TVClicks.Text = "Total: " + Base.clicks_Total;
@@ -192,7 +195,7 @@ namespace ButtonClicker
 		 //No more SQL will replace with a webservice insted
 		private void btnSQL_Click (object sender, EventArgs e)
 		{
-			string sqlConnectionString = "server=10.0.2.2:3306;user id=master;password=master;database=test_1;connection timeout=10";
+			/*	string sqlConnectionString = "server=10.0.2.2:3306;user id=master;password=master;database=test_1;connection timeout=10";
 			SqlConnection myConnection = new SqlConnection(sqlConnectionString);
 
 			try
@@ -205,7 +208,7 @@ namespace ButtonClicker
 			{
 				Toast.MakeText (this,a.ToString(), ToastLength.Long).Show();
 			}
-
+			*/
 		}
 	}
 }
